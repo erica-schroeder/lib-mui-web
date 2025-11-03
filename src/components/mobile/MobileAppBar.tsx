@@ -1,11 +1,11 @@
-import React, { useState } from 'react'
-import { AppBar, Toolbar, IconButton, Divider, SxProps, Theme, AppBarProps, Box, Typography } from '@mui/material'
-import MenuIcon from '@mui/icons-material/Menu'
 import { TemporaryNavDrawer } from '@/components/nav-drawer/TemporaryNavDrawer'
 import { NavItem } from '@/types/navigation'
+import MenuIcon from '@mui/icons-material/Menu'
+import { AppBar, AppBarProps, Box, IconButton, SxProps, Theme, Toolbar } from '@mui/material'
+import React, { useState } from 'react'
 
 interface MobileAppBarProps extends AppBarProps {
-  Logo?: React.FC
+  logo?: React.ReactNode
   navItems: NavItem[]
   drawerAnchor?: 'left' | 'right'
   logoPosition?: 'center' | 'opposite'
@@ -13,10 +13,10 @@ interface MobileAppBarProps extends AppBarProps {
 }
 
 export const MobileAppBar: React.FC<MobileAppBarProps> = ({
-  Logo = () => <Box/>,
+  logo = <Box />,
   navItems,
-  drawerAnchor='right',
-  logoPosition='center',
+  drawerAnchor = 'right',
+  logoPosition = 'center',
   sx,
   ...appBarProps
 }) => {
@@ -30,7 +30,9 @@ export const MobileAppBar: React.FC<MobileAppBarProps> = ({
           <MenuIcon fontSize="large" />
         </IconButton>
       }
-    <Logo />
+
+      {logo}
+
       {drawerAnchor === 'right' &&
         <IconButton color="inherit" edge="end" onClick={toggleDrawer}>
           <MenuIcon fontSize="large" />
@@ -38,35 +40,30 @@ export const MobileAppBar: React.FC<MobileAppBarProps> = ({
       }
     </>
 
-
-const isLeft = drawerAnchor === 'left';
+  const isLeft = drawerAnchor === 'left';
   const CenterLayout = () =>
     <>
       <IconButton color="inherit" edge="start" onClick={toggleDrawer} sx={{ visibility: isLeft ? 'visible' : 'hidden' }}>
         <MenuIcon fontSize="large" />
       </IconButton>
-      <Logo />
+
+      {logo}
+
       <IconButton color="inherit" edge="end" onClick={toggleDrawer} sx={{ visibility: !isLeft ? 'visible' : 'hidden' }}>
         <MenuIcon fontSize="large" />
       </IconButton>
     </>
-
 
   return (
     <>
       <AppBar position="static" sx={{ py: 1, mb: 2 }}
         {...appBarProps}
       >
-
-
-<Toolbar sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-  { logoPosition === 'center'
-  ? <CenterLayout />
-  : <OppositeLayout /> }
-
-</Toolbar>
-
-        <Divider />
+        <Toolbar sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          {logoPosition === 'center'
+            ? <CenterLayout />
+            : <OppositeLayout />}
+        </Toolbar>
       </AppBar>
 
       <TemporaryNavDrawer

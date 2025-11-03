@@ -32,13 +32,9 @@ const navItems = [{
   ],
 }];
 
-const DummyLogo: React.FC = () => (
-  <div style={{ width: 50, height: 50, background: 'gray' }} />
-);
-
 export const Default: Story = {
   args: {
     navItems: navItems,
-    Logo: DummyLogo
+    logo: <Typography>Logo</Typography>
   },
 };

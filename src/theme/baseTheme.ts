@@ -41,11 +41,15 @@ declare module '@mui/material/Typography' {
   }
 }
 
+declare module '@mui/material/Button' {
+  interface ButtonPropsVariantOverrides {
+    nav: true
+  }
+}
+
 
 export const baseTheme = createTheme({
   palette: {
-    primary: { main: '#d32f2f' },
-    secondary: { main: '#1976d2' }
   },
   typography: {
     navItemPrimary: {
@@ -68,6 +72,20 @@ export const baseTheme = createTheme({
       styleOverrides: {
         root: { fontFamily: 'Arial, sans-serif' }
       }
-    }
+    },
+    MuiButton: {
+      variants: [
+        {
+          props: { variant: 'nav' },
+          style: ({ theme }) => ({
+            textTransform: 'none',
+            ...theme.typography.navItemPrimary,
+            fontSize: '1.25rem',
+            borderRadius: 0,
+            fontWeight: 'bold',
+          }),
+        },
+      ],
+    },
   }
 });
