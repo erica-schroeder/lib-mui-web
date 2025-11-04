@@ -4,7 +4,7 @@ import { Container, Stack, useMediaQuery } from "@mui/material";
 import { DesktopAppBar } from "../desktop/DesktopAppBar";
 import { MobileAppBar } from "../mobile/MobileAppBar";
 
-interface PermanentNavDrawerLayoutProps {
+interface AppBarNavLayoutProps {
     navItems: NavItem[],
     logo: React.ReactNode,
     children: React.ReactNode[],
@@ -12,26 +12,30 @@ interface PermanentNavDrawerLayoutProps {
     logoAlign?: 'left' | 'center',
     mobileLogoPosition?: 'center' | 'opposite',
     mobileDrawerAnchor?: 'left' | 'right',
+    navItemDivider?: React.ReactNode,
+    containerProps?: Object,
 }
-export const PermanentNavDrawerLayout: React.FC<PermanentNavDrawerLayoutProps> = ({
+export const AppBarNavLayout: React.FC<AppBarNavLayoutProps> = ({
     navItems,
+    navItemDivider,
     logo,
-    logoAlign='center',
-    mobileLogoPosition='center',
-    mobileDrawerAnchor='right',
-    footer=null,
+    logoAlign = 'center',
+    mobileLogoPosition = 'center',
+    mobileDrawerAnchor = 'right',
+    footer = null,
+    containerProps = {},
     children,
 }) => {
-  const theme = useTheme();
-  const isDesktop = useMediaQuery(theme.breakpoints.up('md'));
+    const theme = useTheme();
+    const isDesktop = useMediaQuery(theme.breakpoints.up('md'));
 
     return (
         <Stack sx={{ minHeight: "100vh" }}>
             {isDesktop
-                ? <DesktopAppBar logo={logo} logoAlign={logoAlign} />
+                ? <DesktopAppBar navItems={navItems} logo={logo} logoAlign={logoAlign} navItemDivider={navItemDivider} />
                 : <MobileAppBar navItems={navItems} logo={logo} logoPosition={mobileLogoPosition} drawerAnchor={mobileDrawerAnchor} />
             }
-            <Container sx={{ flexGrow: 1 }}>
+            <Container sx={{ flexGrow: 1 }} {...containerProps} >
                 {children}
             </Container>
             {footer}

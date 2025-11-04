@@ -55,7 +55,12 @@ export const DesktopAppBarNavItem: React.FC<DesktopAppBarNavItemProps> = ({
                     popupState.close();
                     navigate(o.to);
                   }}>
-                  <Typography variant='navItemSecondary'>
+                  <Typography
+                    variant='navItemSecondary'
+                    sx={(theme) => ({
+                      fontFamily: theme.typography.navItemSecondary.fontFamily,
+                    })}
+                  >
                     {o.label}
                   </Typography>
                 </MenuItem>)

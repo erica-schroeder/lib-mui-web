@@ -53,10 +53,14 @@ export const baseTheme = createTheme({
   },
   typography: {
     navItemPrimary: {
+      fontFamily: 'Times New Roman',
+      color: 'red',
       fontWeight: 'bold',
       fontSize: '1.25rem',
     },
     navItemSecondary: {
+      fontFamily: 'Times New Roman',
+      color: 'blue',
       fontWeight: 'bold',
       fontSize: '1.1rem',
     },
@@ -68,11 +72,6 @@ export const baseTheme = createTheme({
     close: CloseIcon,
   },
   components: {
-    MuiTypography: {
-      styleOverrides: {
-        root: { fontFamily: 'Arial, sans-serif' }
-      }
-    },
     MuiButton: {
       variants: [
         {
@@ -80,9 +79,6 @@ export const baseTheme = createTheme({
           style: ({ theme }) => ({
             textTransform: 'none',
             ...theme.typography.navItemPrimary,
-            fontSize: '1.25rem',
-            borderRadius: 0,
-            fontWeight: 'bold',
           }),
         },
       ],

@@ -1,6 +1,6 @@
+import { Divider, Stack, Typography } from '@mui/material';
 import type { Meta, StoryObj } from '@storybook/react';
 import { PermanentNavDrawerLayout } from './PermanentNavDrawerLayout';
-import { Box, Divider, Stack, Typography } from '@mui/material';
 
 const meta = {
     component: PermanentNavDrawerLayout,

@@ -16,17 +16,24 @@ export const NavDrawerItem: React.FC<NavDrawerItemProps> = ({
   const [openSubmenu, setOpenSubmenu] = useState(false)
   const theme = useTheme()
   const ArrowDownIcon = theme.icons.arrowDown
-  const ArrowUpIcon = theme.icons.arrowDown
+  const ArrowUpIcon = theme.icons.arrowUp
 
   // If there is no submenu, render a simple MenuItem
   if (!navItem.submenu) {
     return (
       <MenuItem
+        disableRipple
         component={Link}
         to={navItem.to ?? '#'}
         onClick={() => onNavigate()}
       >
-        <Typography variant="navItemPrimary">{navItem.label}</Typography>
+        <Typography
+          variant="navItemPrimary"
+          sx={(theme) => ({
+            fontFamily: theme.typography.navItemPrimary.fontFamily,
+          })}>
+          {navItem.label}
+        </Typography>
       </MenuItem>
     )
   }
@@ -34,11 +41,17 @@ export const NavDrawerItem: React.FC<NavDrawerItemProps> = ({
   // Render parent item with collapsible submenu
   return (
     <>
-      <MenuItem onClick={() => setOpenSubmenu((prev) => !prev)}>
-        <Typography variant="navItemPrimary" sx={{ pr: 2 }}>
+      <MenuItem disableRipple onClick={() => setOpenSubmenu((prev) => !prev)}>
+        <Typography
+          variant="navItemPrimary"
+          sx={(theme) => ({
+            fontFamily: theme.typography.navItemPrimary.fontFamily,
+            pr: 2
+          })}
+        >
           {navItem.label}
         </Typography>
-        {openSubmenu ? <ArrowUpIcon /> : <ArrowDownIcon />}
+        {openSubmenu ? <ArrowUpIcon sx={{ color: theme.typography.navItemPrimary.color }} /> : <ArrowDownIcon sx={{ color: theme.typography.navItemPrimary.color }} />}
       </MenuItem>
 
       <Collapse in={openSubmenu} unmountOnExit>
@@ -51,7 +64,13 @@ export const NavDrawerItem: React.FC<NavDrawerItemProps> = ({
                 onNavigate()
               }}
             >
-              <Typography variant="navItemSecondary" sx={{ pl: 2 }}>
+              <Typography
+                variant="navItemSecondary"
+                sx={(theme) => ({
+                  fontFamily: theme.typography.navItemSecondary.fontFamily,
+                  pl: 2
+                })}
+              >
                 {o.label}
               </Typography>
             </ListItemButton>

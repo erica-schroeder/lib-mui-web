@@ -3,8 +3,9 @@ import path from 'path';
 
 export default defineConfig({
   entry: ['src/index.ts'],
-  format: ['esm'],
+  format: ['esm', 'cjs'],
   dts: true,
+  sourcemap: true,
   clean: true,
   external: ['react', 'react-dom', '@mui/material'],
   esbuildOptions(options) {

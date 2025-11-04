@@ -1,10 +1,9 @@
 {
   "name": "@erica/mui-web",
   "version": "0.1.0",
-  "main": "dist/mui-web.esm.js",
-  "module": "dist/mui-web.esm.js",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
-  "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsup",
