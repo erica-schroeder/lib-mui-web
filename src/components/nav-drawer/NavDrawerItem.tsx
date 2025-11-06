@@ -41,7 +41,13 @@ export const NavDrawerItem: React.FC<NavDrawerItemProps> = ({
   // Render parent item with collapsible submenu
   return (
     <>
-      <MenuItem disableRipple onClick={() => setOpenSubmenu((prev) => !prev)}>
+      <MenuItem disableRipple onClick={() => setOpenSubmenu((prev) => !prev)}
+        sx={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+        }}
+      >
         <Typography
           variant="navItemPrimary"
           sx={(theme) => ({

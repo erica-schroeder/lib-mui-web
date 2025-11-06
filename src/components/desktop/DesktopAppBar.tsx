@@ -20,7 +20,9 @@ export const DesktopAppBar: React.FC<DesktopAppBarProps> = ({
 
   const NavBar = <Stack direction="row" alignItems="center" divider={navItemDivider}>
     {navItems?.map((item, idx) =>
+      <Box key={idx}>
         <DesktopAppBarNavItem navItem={item} />
+      </Box>
     )}
     </Stack>
 
@@ -38,7 +40,7 @@ export const DesktopAppBar: React.FC<DesktopAppBarProps> = ({
 
 
   return (
-    <AppBar position="static" sx={{ py: 1, mb: 2 }}
+    <AppBar position="static" sx={{ py: 1 }}
       {...appBarProps}
     >
       <Toolbar sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>

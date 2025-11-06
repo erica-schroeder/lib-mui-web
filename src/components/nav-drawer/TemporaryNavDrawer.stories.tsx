@@ -17,6 +17,12 @@ const navItems = [{
     { label: 'Consulting', to: '/services/consulting' },
     { label: 'Design', to: '/services/design' },
   ],
+}, {
+  label: 'Extra Services',
+  submenu: [
+    { label: 'Extra Consulting', to: '/services/consulting' },
+    { label: 'Extra Design', to: '/services/design' },
+  ],
 }];
 
 export const LeftAnchor: Story = {

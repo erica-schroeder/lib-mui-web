@@ -1,30 +1,32 @@
 import { NavItem } from "@/types/navigation";
-import { Box, Drawer, DrawerProps, List } from "@mui/material";
+import { Box, DrawerProps, List } from "@mui/material";
 import { NavDrawerItem } from "./NavDrawerItem";
 
-interface TemporaryNavDrawerProps extends DrawerProps {
+interface PermanentNavDrawerProps extends DrawerProps {
     navItems: NavItem[],
 }
 
-export const TemporaryNavDrawer: React.FC<TemporaryNavDrawerProps> = ({
+export const PermanentNavDrawer: React.FC<PermanentNavDrawerProps> = ({
     navItems,
-    ...drawerProps
+    sx,
+    ...props
 }) => {
     return (
-        <Drawer
-            variant='permanent'
-            ModalProps={{
-                disableScrollLock: true
+        <Box
+            sx={{
+                width: 250,
+                borderRight: (theme) => `1px solid ${theme.palette.divider}`,
+                backgroundColor: (theme) => theme.palette.background.paper,
+                ...sx
             }}
-            {...drawerProps}
+            role="presentation"
+            {...props}
         >
-            <Box sx={{ width: 250 }} role="presentation" >
-                <List>
-                    {navItems.map((item) =>
-                        <NavDrawerItem key={item.label} navItem={item} />
-                    )}
-                </List>
-            </Box>
-        </Drawer>
+            <List>
+                {navItems.map((item) =>
+                    <NavDrawerItem key={item.label} navItem={item} />
+                )}
+            </List>
+        </Box>
     );
 };

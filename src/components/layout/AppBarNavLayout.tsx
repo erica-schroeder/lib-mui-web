@@ -1,19 +1,11 @@
-import { NavItem } from "@/types/navigation";
-import { useTheme } from '@mui/material/styles';
 import { Container, Stack, useMediaQuery } from "@mui/material";
+import { useTheme } from '@mui/material/styles';
 import { DesktopAppBar } from "../desktop/DesktopAppBar";
 import { MobileAppBar } from "../mobile/MobileAppBar";
+import { AppLayoutProps } from "./AppLayoutProps";
 
-interface AppBarNavLayoutProps {
-    navItems: NavItem[],
-    logo: React.ReactNode,
-    children: React.ReactNode[],
-    footer: React.ReactNode[],
-    logoAlign?: 'left' | 'center',
-    mobileLogoPosition?: 'center' | 'opposite',
-    mobileDrawerAnchor?: 'left' | 'right',
+interface AppBarNavLayoutProps extends AppLayoutProps {
     navItemDivider?: React.ReactNode,
-    containerProps?: Object,
 }
 export const AppBarNavLayout: React.FC<AppBarNavLayoutProps> = ({
     navItems,

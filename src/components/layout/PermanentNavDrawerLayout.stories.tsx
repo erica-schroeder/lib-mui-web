@@ -24,10 +24,15 @@ const navItems = [{
   submenu: [
     { label: 'Consulting', to: '/services/consulting' },
     { label: 'Design', to: '/services/design' },
+  ]}, {
+  label: 'Extra Services',
+  submenu: [
+    { label: 'Extra Consulting', to: '/services/consulting' },
+    { label: 'Extra Design', to: '/services/design' },
   ],
 }];
 
-export const WithNav: Story = {
+export const Default: Story = {
   args: {
     navItems: navItems,
     logo: <Typography>Logo</Typography>,
@@ -39,11 +44,5 @@ export const WithNav: Story = {
       </>
     ),
       footer: <Stack sx={{alignItems: 'center'}}>footer</Stack>
-  },
-};
-
-export const NoNav: Story = {
-  args: {
-    logo: <Typography>Logo</Typography>,
   },
 };
