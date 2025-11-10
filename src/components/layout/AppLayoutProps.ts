@@ -11,4 +11,5 @@ export interface AppLayoutProps {
     mobileLogoPosition?: 'center' | 'opposite';
     mobileDrawerAnchor?: 'left' | 'right';
     containerProps?: Object;
+    mobileNavDrawerProps?: Object;
 }

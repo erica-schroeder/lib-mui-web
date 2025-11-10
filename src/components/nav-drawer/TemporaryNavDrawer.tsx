@@ -17,7 +17,9 @@ export const TemporaryNavDrawer: React.FC<TemporaryNavDrawerProps> = ({
         <Drawer
             onClose={onClose}
             ModalProps={{
-                disableScrollLock: true
+                disableScrollLock: true,
+                    disableRestoreFocus: false, // let MUI restore focus
+    disableAutoFocus: false,    // auto-focus first element inside drawer
             }}
             {...drawerProps}
         >
@@ -32,7 +34,7 @@ export const TemporaryNavDrawer: React.FC<TemporaryNavDrawerProps> = ({
                     <CloseIcon />
                 </IconButton>
             </Box>
-            <Box sx={{ width: 250 }} role="presentation" >
+            <Box sx={{ minWidth: 250 }} role="presentation" >
                 <List>
                     {navItems.map((item) =>
                         <NavDrawerItem key={item.label} navItem={item} onNavigate={onClose} />

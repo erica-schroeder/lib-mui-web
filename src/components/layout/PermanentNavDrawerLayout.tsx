@@ -19,6 +19,7 @@ export const PermanentNavDrawerLayout: React.FC<PermanentNavDrawerLayoutProps> =
     footer=null,
     containerProps={},
     desktopNavDrawerProps={},
+    mobileNavDrawerProps={},
     children,
 }) => {
   const theme = useTheme();
@@ -28,7 +29,7 @@ export const PermanentNavDrawerLayout: React.FC<PermanentNavDrawerLayoutProps> =
         <Stack sx={{ minHeight: "100vh" }}>
             {isDesktop
                 ? <DesktopAppBar logo={logo} logoAlign={logoAlign} />
-                : <MobileAppBar navItems={navItems} logo={logo} logoPosition={mobileLogoPosition} drawerAnchor={mobileDrawerAnchor} />
+                : <MobileAppBar navItems={navItems} logo={logo} logoPosition={mobileLogoPosition} drawerAnchor={mobileDrawerAnchor} navDrawerProps={mobileNavDrawerProps} />
             }
             <Stack direction="row" sx={{ flexGrow: 1 }}>
                 {isDesktop &&

@@ -5,11 +5,12 @@ import { AppBar, AppBarProps, Box, IconButton, SxProps, Theme, Toolbar } from '@
 import React, { useState } from 'react'
 
 interface MobileAppBarProps extends AppBarProps {
-  logo?: React.ReactNode
-  navItems: NavItem[]
-  drawerAnchor?: 'left' | 'right'
-  logoPosition?: 'center' | 'opposite'
-  sx?: SxProps<Theme>
+  logo?: React.ReactNode;
+  navItems: NavItem[];
+  drawerAnchor?: 'left' | 'right';
+  logoPosition?: 'center' | 'opposite';
+  sx?: SxProps<Theme>;
+  navDrawerProps?: Object;
 }
 
 export const MobileAppBar: React.FC<MobileAppBarProps> = ({
@@ -18,6 +19,7 @@ export const MobileAppBar: React.FC<MobileAppBarProps> = ({
   drawerAnchor = 'right',
   logoPosition = 'center',
   sx,
+  navDrawerProps={},
   ...appBarProps
 }) => {
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -71,6 +73,7 @@ export const MobileAppBar: React.FC<MobileAppBarProps> = ({
         onClose={toggleDrawer}
         navItems={navItems}
         anchor={drawerAnchor}
+        {...navDrawerProps}
       />
     </>
   )
