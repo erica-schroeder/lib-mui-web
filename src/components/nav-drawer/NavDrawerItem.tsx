@@ -61,7 +61,10 @@ export const NavDrawerItem: React.FC<NavDrawerItemProps> = ({
       </MenuItem>
 
       <Collapse in={openSubmenu} unmountOnExit>
-        <List disablePadding>
+        <List disablePadding
+          sx={{
+            pb: 2
+          }}>
           {navItem.submenu.map((o) => (
             <ListItemButton
               key={o.label}

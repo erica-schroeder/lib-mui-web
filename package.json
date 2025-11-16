@@ -1,5 +1,6 @@
 {
   "name": "@erica/mui-web",
+  "homepage": "https://erica-schroeder.github.io/lib-mui-web",
   "version": "0.1.0",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -8,7 +9,9 @@
     "dev": "vite",
     "build": "tsup",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "predeploy": "npm run build-storybook",
+    "deploy": "gh-pages -d storybook-static"
   },
   "peerDependencies": {
     "@mui/icons-material": "^7.3.4",
@@ -27,6 +30,7 @@
     "@types/react": "^19.2.2",
     "@types/react-dom": "^19.2.2",
     "@vitejs/plugin-react": "^5.1.0",
+    "gh-pages": "^6.3.0",
     "storybook": "^10.0.3",
     "tsup": "^8.5.0",
     "typescript": "^5.9.3",
